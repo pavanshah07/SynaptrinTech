@@ -1,0 +1,8 @@
+{
+  "name": "Syntrix",
+  "description": "Digital marketing, SEO, Web Development, and AI Solutions agency website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
