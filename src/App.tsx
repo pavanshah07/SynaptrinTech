@@ -1,3 +1,8 @@
+
+{/* LIVE TEST */ }
+<div className="bg-red-600 text-white text-center py-4 text-2xl font-bold">
+  SYNAPTRINTECH LIVE UPDATE TEST
+</div>
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -22,8 +27,8 @@ type TabType = 'home' | 'about' | 'services' | 'pricing' | 'contact';
 function MainContent() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
   const [view, setView] = useState<'page' | 'signin' | 'signup'>('page');
-  const [selectedPlan, setSelectedPlan] = useState<{name: string, price: string} | null>(null);
-  const [loginPrompt, setLoginPrompt] = useState<{isOpen: boolean, plan?: {name: string, price: string}}>({isOpen: false});
+  const [selectedPlan, setSelectedPlan] = useState<{ name: string, price: string } | null>(null);
+  const [loginPrompt, setLoginPrompt] = useState<{ isOpen: boolean, plan?: { name: string, price: string } }>({ isOpen: false });
 
   const { user } = useAuth();
 
@@ -88,10 +93,10 @@ function MainContent() {
   // Full-screen Payment View
   if (selectedPlan) {
     return (
-      <PaymentPage 
-        planName={selectedPlan.name} 
-        price={selectedPlan.price} 
-        onBack={() => handleNavigate('#pricing')} 
+      <PaymentPage
+        planName={selectedPlan.name}
+        price={selectedPlan.price}
+        onBack={() => handleNavigate('#pricing')}
       />
     );
   }
@@ -99,9 +104,9 @@ function MainContent() {
   // Full-screen Dedicated Auth Page View (Sign In / Sign Up)
   if (view === 'signin' || view === 'signup') {
     return (
-      <AuthPage 
-        initialMode={view} 
-        onBack={() => handleNavigate('#home')} 
+      <AuthPage
+        initialMode={view}
+        onBack={() => handleNavigate('#home')}
       />
     );
   }
@@ -109,7 +114,7 @@ function MainContent() {
   return (
     <div className="min-h-screen font-sans bg-slate-950 text-gray-100 relative flex flex-col justify-between">
       <div>
-        <Navigation 
+        <Navigation
           activeTab={activeTab}
           onOpenSignIn={() => handleOpenAuth('signin')}
           onOpenSignUp={() => handleOpenAuth('signup')}
@@ -205,7 +210,7 @@ function MainContent() {
               </div>
 
               <h3 className="text-2xl font-extrabold text-white mb-2">Login Required</h3>
-              
+
               <p className="text-slate-300 text-sm mb-6 leading-relaxed">
                 You must be logged in to purchase the <strong className="text-cyan-400">SynaptrinTech {loginPrompt.plan?.name}</strong> plan ({loginPrompt.plan?.price}).
                 Please sign in or create a free account to proceed to checkout.
