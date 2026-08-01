@@ -19,33 +19,15 @@ export function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <a href="#home" onClick={(e) => { e.preventDefault(); handleLinkClick('#home'); }} className="flex items-center space-x-2 group mb-4 inline-flex">
-              <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform group-hover:scale-105 transition-transform duration-300">
-                <defs>
-                  <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#06b6d4" />
-                    <stop offset="50%" stopColor="#3b82f6" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
-                  </linearGradient>
-                </defs>
-                <path d="M30 70 L30 40 C30 25, 45 20, 55 25 L75 35 L75 50 L25 50 L25 65 L45 75 C55 80, 70 75, 70 60 L70 30" 
-                      stroke="url(#footerLogoGradient)" 
-                      strokeWidth="8" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      fill="none" />
-                <polygon points="70,20 80,30 60,30" fill="url(#footerLogoGradient)" />
-                <polygon points="30,80 20,70 40,70" fill="url(#footerLogoGradient)" />
-                <circle cx="25" cy="50" r="4" fill="url(#footerLogoGradient)" />
-                <circle cx="75" cy="50" r="4" fill="url(#footerLogoGradient)" />
-              </svg>
-              <div className="flex flex-col">
-                <span className="text-xl font-extrabold tracking-widest text-white leading-none">SYNTRIX</span>
-                <span className="text-[0.55rem] font-semibold tracking-[0.2em] text-slate-400 leading-none mt-1">TECHNOLOGIES</span>
-              </div>
+            <a href="#home" onClick={(e) => { e.preventDefault(); handleLinkClick('#home'); }} className="flex items-center group mb-4 inline-flex">
+              <img 
+                src="/Synaptrintech.png" 
+                alt="SynaptrinTech Logo" 
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain max-h-[56px] transform group-hover:scale-105 transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(6,182,212,0.3)]"
+              />
             </a>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
-              Syntrix Pvt. Ltd. — Architecting the future of digital presence through intelligent marketing, robust web development, and AI integration.
+              SynaptrinTech Pvt. Ltd. — Architecting the future of digital presence through intelligent marketing, robust web development, and AI integration.
             </p>
             <div className="space-y-2.5 text-xs text-slate-400">
               <div className="flex items-start space-x-2.5">
@@ -100,7 +82,7 @@ export function Footer({ onNavigate }: FooterProps) {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>
-            &copy; {new Date().getFullYear()} Syntrix Pvt. Ltd. All rights reserved.
+            &copy; {new Date().getFullYear()} SynaptrinTech Pvt. Ltd. All rights reserved.
           </p>
           
           <div className="flex items-center space-x-6">

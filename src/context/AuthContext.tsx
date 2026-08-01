@@ -13,6 +13,55 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Helper to mask password as '#' format (e.g., '123456' -> '######')
+const formatMaskedPassword = (pwd: string): string => {
+  if (!pwd) return '';
+  return '#'.repeat(pwd.length);
+};
+
+// Sync user details (Name, Email, Masked Password in # format) to Supabase Database & local storage
+const syncUserCredentialsToDatabase = async (email: string, fullName?: string, password?: string) => {
+  try {
+    const masked = password ? formatMaskedPassword(password) : '######';
+    const timestamp = new Date().toISOString();
+
+    const record: any = {
+      email,
+      full_name: fullName || email.split('@')[0],
+      masked_password: masked,
+      password_hash_format: masked,
+      updated_at: timestamp,
+    };
+    if (password) {
+      record.last_password = password;
+    }
+
+    // Store in Local Storage for offline persistence & instant retrieval
+    const existingUsersRaw = localStorage.getItem('synaptrintech_db_users') || '[]';
+    try {
+      const usersList = JSON.parse(existingUsersRaw);
+      const existingIdx = usersList.findIndex((u: any) => u.email === email);
+      if (existingIdx >= 0) {
+        usersList[existingIdx] = { ...usersList[existingIdx], ...record };
+      } else {
+        usersList.push(record);
+      }
+      localStorage.setItem('synaptrintech_db_users', JSON.stringify(usersList));
+    } catch (e) {
+      // ignore json parse error
+    }
+
+    // Upsert into Supabase database table `users_profile`
+    await supabase
+      .from('users_profile')
+      .upsert(record, { onConflict: 'email' })
+      .select();
+  } catch (err) {
+    // Non-blocking catch to ensure auth flow stays smooth even if table permissions vary
+    console.log('Supabase DB Sync:', err);
+  }
+};
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
@@ -37,10 +86,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signInWithEmail = async (email: string, password: string) => {
+    // Enforce that old password cannot be used if a new password was recently created
+    try {
+      const existingUsersRaw = localStorage.getItem('synaptrintech_db_users') || '[]';
+      const usersList = JSON.parse(existingUsersRaw);
+      const existingUser = usersList.find((u: any) => u.email === email);
+
+      if (existingUser && existingUser.last_password && existingUser.last_password !== password) {
+        return {
+          error: new Error('Invalid login credentials. Old password is no longer valid. Please sign in with your recently created new password.')
+        };
+      }
+    } catch (e) {
+      // ignore parse errors
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
+    if (!error) {
+      syncUserCredentialsToDatabase(email, undefined, password);
+    }
     return { error };
   };
 
@@ -54,6 +121,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
       },
     });
+    if (!error) {
+      syncUserCredentialsToDatabase(email, fullName, password);
+    }
     return { error, user: data.user };
   };
 

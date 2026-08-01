@@ -56,7 +56,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
             handleClose();
           }, 1200);
         }
-      } else {
+      } else if (mode === 'signup') {
         const { error, user } = await signUpWithEmail(email, password, fullName);
         if (error) {
           setErrorMessage(error.message);
@@ -106,7 +106,9 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
                   Free Member Access
                 </div>
                 <h2 className="text-3xl font-extrabold text-white mb-2 tracking-tight">
-                  {mode === 'signin' ? 'Welcome Back' : 'Create Free Account'}
+                  {mode === 'signin' 
+                    ? 'Welcome Back' 
+                    : 'Create Free Account'}
                 </h2>
                 <p className="text-slate-400 text-sm">
                   {mode === 'signin' 
@@ -171,9 +173,11 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Password
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                      Password
+                    </label>
+                  </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
                       <Lock size={18} />
@@ -198,7 +202,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
                   {isLoading ? (
                     <>
                       <Loader2 size={18} className="animate-spin" />
-                      <span>Authenticating...</span>
+                      <span>Processing...</span>
                     </>
                   ) : mode === 'signin' ? (
                     'Sign In for Free Access'

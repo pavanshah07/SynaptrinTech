@@ -295,7 +295,7 @@ export function Services() {
                             </div>
                             <div>
                               <div className="text-xs font-bold text-white flex items-center gap-1">
-                                syntrix.tech <span className="text-[10px] text-pink-400 bg-pink-500/10 px-1.5 py-0.2 rounded">Sponsored</span>
+                                synaptrintech.com <span className="text-[10px] text-pink-400 bg-pink-500/10 px-1.5 py-0.2 rounded">Sponsored</span>
                               </div>
                               <div className="text-[10px] text-slate-400">Instagram & Facebook Feed</div>
                             </div>
@@ -358,9 +358,9 @@ export function Services() {
                           <div className="text-xs text-slate-400">Ad Search Query: <strong className="text-white">"Best Digital Agency Mumbai"</strong></div>
                           <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1">
                             <div className="text-[10px] text-amber-400 font-bold flex items-center gap-1">
-                              Ad · https://syntrix.tech/google-ads
+                              Ad · https://synaptrintech.com/google-ads
                             </div>
-                            <div className="text-sm font-extrabold text-blue-400">Syntrix — #1 Technical SEO & Google PPC Agency</div>
+                            <div className="text-sm font-extrabold text-blue-400">SynaptrinTech — #1 Technical SEO & Google PPC Agency</div>
                             <div className="text-xs text-slate-300 font-light">Get 3x ROI with optimized Search Ads & PMax campaigns. Book a consultation today.</div>
                           </div>
                         </div>
@@ -444,12 +444,12 @@ export function Services() {
                       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3 text-xs">
                         <div className="flex items-center space-x-2 border-b border-slate-800 pb-2">
                           <Bot size={16} className="text-purple-400" />
-                          <span className="font-bold text-white">Syntrix AI Support Bot (24/7 Active)</span>
+                          <span className="font-bold text-white">SynaptrinTech AI Support Bot (24/7 Active)</span>
                         </div>
 
                         <div className="space-y-2">
                           <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-slate-300 max-w-[85%]">
-                            Hi! How can Syntrix help scale your business today?
+                            Hi! How can SynaptrinTech help scale your business today?
                           </div>
                           <div className="bg-purple-600/20 text-purple-200 p-2.5 rounded-xl border border-purple-500/30 max-w-[85%] ml-auto text-right">
                             I want to run Meta & Google Ads for my business.

@@ -42,7 +42,7 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
             onBack();
           }, 1200);
         }
-      } else {
+      } else if (mode === 'signup') {
         const { error, user } = await signUpWithEmail(email, password, fullName);
         if (error) {
           setErrorMessage(error.message);
@@ -75,28 +75,15 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
           className="inline-flex items-center space-x-2 text-slate-400 hover:text-cyan-400 font-semibold text-sm transition-colors group"
         >
           <ArrowLeft size={18} className="transform group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Syntrix</span>
+          <span>Back to SynaptrinTech</span>
         </button>
 
-        <div className="flex items-center space-x-2">
-          <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="pageLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
-                <stop offset="50%" stopColor="#3b82f6" />
-                <stop offset="100%" stopColor="#8b5cf6" />
-              </linearGradient>
-            </defs>
-            <path d="M30 70 L30 40 C30 25, 45 20, 55 25 L75 35 L75 50 L25 50 L25 65 L45 75 C55 80, 70 75, 70 60 L70 30" 
-                  stroke="url(#pageLogoGrad)" 
-                  strokeWidth="8" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  fill="none" />
-          </svg>
-          <span className="font-black text-xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-            SYNTRIX
-          </span>
+        <div className="flex items-center">
+          <img 
+            src="/Synaptrintech.png" 
+            alt="SynaptrinTech Logo" 
+            className="h-10 sm:h-12 w-auto object-contain max-h-[50px] filter drop-shadow-[0_0_10px_rgba(6,182,212,0.3)]"
+          />
         </div>
       </div>
 
@@ -110,9 +97,11 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            {mode === 'signin' ? 'Welcome Back to ' : 'Start Your Journey with '}
+            {mode === 'signin' 
+              ? 'Welcome Back to ' 
+              : 'Start Your Journey with '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">
-              Syntrix
+              SynaptrinTech
             </span>
           </h1>
 
@@ -121,15 +110,15 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
           </p>
 
           <div className="space-y-4 pt-2">
-            <div className="flex items-start space-x-3 bg-slate-900/60 border border-slate-800/80 p-3.5 rounded-xl">
-              <ShieldCheck size={20} className="text-emerald-400 shrink-0 mt-0.5" />
+            <div className="flex items-start space-x-3 bg-slate-900/60 border border-slate-800 p-3.5 rounded-2xl">
+              <ShieldCheck size={20} className="text-cyan-400 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold text-white uppercase tracking-wider">Free Access Included</h4>
-                <p className="text-slate-400 text-xs mt-0.5">Explore full services, pricing models, and agency capabilities.</p>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider">Unlimited Free Website Access</h4>
+                <p className="text-slate-400 text-xs mt-0.5">Explore all agency services, portfolio showcases, and tools.</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-3 bg-slate-900/60 border border-slate-800/80 p-3.5 rounded-xl">
+            <div className="flex items-start space-x-3 bg-slate-900/60 border border-slate-800 p-3.5 rounded-2xl">
               <Zap size={20} className="text-cyan-400 shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">Supabase Powered Authentication</h4>
@@ -147,7 +136,9 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
         >
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
-              {mode === 'signin' ? 'Sign In to Your Account' : 'Create Your Free Account'}
+              {mode === 'signin' 
+                ? 'Sign In to Your Account' 
+                : 'Create Your Free Account'}
             </h2>
             <p className="text-slate-400 text-sm">
               {mode === 'signin' 
@@ -212,9 +203,11 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  Password
+                </label>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
                   <Lock size={18} />
@@ -279,7 +272,7 @@ export function AuthPage({ initialMode, onBack }: AuthPageProps) {
 
       {/* Footer copyright */}
       <div className="text-center text-xs text-slate-500 z-10 pt-4">
-        &copy; {new Date().getFullYear()} Syntrix Technologies. All rights reserved.
+        &copy; {new Date().getFullYear()} SynaptrinTech Technologies. All rights reserved.
       </div>
     </div>
   );

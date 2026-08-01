@@ -49,40 +49,18 @@ export function Navigation({ activeTab = 'home', onOpenSignIn, onOpenSignUp, onN
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl py-4' : 'bg-slate-950/40 backdrop-blur-md border-b border-slate-800/30 py-5'
+        isScrolled ? 'bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl py-2.5' : 'bg-slate-950/40 backdrop-blur-md border-b border-slate-800/30 py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
-            <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center space-x-2.5 group">
-              <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform group-hover:scale-105 transition-transform duration-300 filter drop-shadow-md">
-                <defs>
-                  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#06b6d4" />
-                    <stop offset="50%" stopColor="#3b82f6" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
-                  </linearGradient>
-                </defs>
-                <path d="M30 70 L30 40 C30 25, 45 20, 55 25 L75 35 L75 50 L25 50 L25 65 L45 75 C55 80, 70 75, 70 60 L70 30" 
-                      stroke="url(#logoGradient)" 
-                      strokeWidth="8" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      fill="none" />
-                <polygon points="70,20 80,30 60,30" fill="url(#logoGradient)" />
-                <polygon points="30,80 20,70 40,70" fill="url(#logoGradient)" />
-                <circle cx="25" cy="50" r="4" fill="url(#logoGradient)" />
-                <circle cx="75" cy="50" r="4" fill="url(#logoGradient)" />
-              </svg>
-              <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300 leading-none filter drop-shadow">
-                  SYNTRIX
-                </span>
-                <span className="text-[0.62rem] font-bold tracking-[0.25em] text-slate-300 leading-none mt-1">
-                  TECHNOLOGIES
-                </span>
-              </div>
+            <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center group">
+              <img 
+                src="/Synaptrintech.png" 
+                alt="SynaptrinTech Logo" 
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain max-h-[56px] transform group-hover:scale-105 transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(6,182,212,0.35)]"
+              />
             </a>
           </div>
           

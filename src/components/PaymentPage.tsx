@@ -33,11 +33,11 @@ export function PaymentPage({ planName, price, onBack }: PaymentPageProps) {
     try {
       // 1. Generate text receipt content
       const receiptContent = `================================================
-SYNTRIX TECHNOLOGIES - OFFICIAL SUBSCRIPTION RECEIPT
+SYNAPTRINTECH TECHNOLOGIES - OFFICIAL SUBSCRIPTION RECEIPT
 ================================================
 Transaction ID : ${txId}
 Date & Time    : ${new Date().toLocaleString()}
-Plan Subscribed: Syntrix ${planName} Plan
+Plan Subscribed: SynaptrinTech ${planName} Plan
 Billing Amount : ${price}
 Customer Name  : ${cardholderName}
 Customer Email : ${email}
@@ -120,7 +120,7 @@ Visit again as you know correct suitable for you.
             </div>
             <div className="flex justify-between items-center border-b border-slate-800/80 pb-2">
               <span className="text-slate-400">Plan Purchased</span>
-              <span className="font-bold text-white">Syntrix {planName}</span>
+              <span className="font-bold text-white">SynaptrinTech {planName}</span>
             </div>
             <div className="flex justify-between items-center border-b border-slate-800/80 pb-2">
               <span className="text-slate-400">Amount Paid</span>
@@ -176,7 +176,7 @@ Visit again as you know correct suitable for you.
               <div className="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 rounded-full text-xs font-bold mb-4">
                 Selected Plan
               </div>
-              <h3 className="text-2xl font-extrabold text-white mb-2">Syntrix {planName}</h3>
+              <h3 className="text-2xl font-extrabold text-white mb-2">SynaptrinTech {planName}</h3>
               <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mb-6">
                 {price} <span className="text-sm font-normal text-slate-400">{price !== 'Custom' ? '/ month' : ''}</span>
               </p>

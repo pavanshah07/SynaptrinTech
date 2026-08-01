@@ -39,7 +39,7 @@ export function About({ onNavigate }: AboutProps) {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
             Meet the Driving Force Behind{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">
-              Syntrix Technologies
+              SynaptrinTech Technologies
             </span>
           </h2>
           <p className="text-slate-400 text-base sm:text-lg font-light leading-relaxed">
@@ -47,91 +47,97 @@ export function About({ onNavigate }: AboutProps) {
           </p>
         </div>
 
-        {/* Founder Spotlight Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
-          {/* Left Column: Image Card */}
+        {/* Founder & CEO Executive Spotlight Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-20">
+          {/* Founder Card: Pavan Shah */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 relative"
+            className="relative group"
           >
-            <div className="relative group mx-auto max-w-sm sm:max-w-md lg:max-w-none">
-              {/* Outer glow ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 rounded-3xl blur-lg opacity-40 group-hover:opacity-75 transition duration-500" />
-
-              <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500" />
+            <div className="relative h-full bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between">
+              <div className="relative w-full h-[380px] sm:h-[440px] bg-slate-950 overflow-hidden">
                 <img
                   src="/Pavan.png"
-                  alt="Pavan Shah - Founder & CEO of Syntrix Technologies"
-                  className="w-full h-[480px] sm:h-[560px] lg:h-[600px] object-cover object-top rounded-t-3xl block filter contrast-[1.02]"
+                  alt="Pavan Shah - Founder of SynaptrinTech"
+                  className="w-full h-full object-cover object-top block filter contrast-[1.02]"
                 />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/20 backdrop-blur-md border border-cyan-500/30 text-cyan-300 text-xs font-bold rounded-full z-10">
+                  Founder
+                </div>
+              </div>
 
-                {/* Info Overlay / Badge */}
-                <div className="bg-slate-900/95 backdrop-blur-md border-t border-slate-800/80 p-5 flex items-center justify-between">
-                  <div>
-                    <h3 className="text-2xl font-extrabold text-white tracking-wide">Pavan Shah</h3>
-                    <p className="text-cyan-400 font-semibold text-xs sm:text-sm flex items-center gap-1 mt-0.5">
-                      <Award size={16} /> Founder & CEO, Syntrix Technologies
-                    </p>
-                  </div>
-                  <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold rounded-full">
-                    Leadership
-                  </span>
+              <div className="p-6 space-y-4 bg-slate-900/95 backdrop-blur-md border-t border-slate-800/80 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-extrabold text-white tracking-wide">Pavan Shah</h3>
+                  <p className="text-cyan-400 font-semibold text-xs sm:text-sm flex items-center gap-1 mt-0.5">
+                    <Award size={16} /> Founder, SynaptrinTech
+                  </p>
+                  <blockquote className="text-sm text-slate-300 font-medium italic border-l-2 border-cyan-400 pl-3 mt-3">
+                    "I am the Founder of SynaptrinTech. My mission is to empower modern brands with intelligent web architecture, data-backed SEO strategy, and custom AI agents."
+                  </blockquote>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="#contact"
+                    onClick={handleContactClick}
+                    className="inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-cyan-500/30 px-5 py-2.5 rounded-full font-bold text-xs transition-all hover:scale-105"
+                  >
+                    <span>Connect with Founder</span>
+                    <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Founder Story & Content */}
+          {/* CEO Card: Suhani Shah */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7 space-y-6"
+            className="relative group"
           >
-            <div className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-full text-xs font-bold uppercase tracking-wider">
-              Executive Statement
-            </div>
-
-            <blockquote className="text-xl sm:text-2xl font-bold text-white leading-relaxed border-l-4 border-cyan-400 pl-4 py-1">
-              "I am the Founder & CEO of Syntrix Technologies. My mission is to empower modern brands with intelligent web architecture, data-backed SEO strategy, and custom AI agents that drive real revenue."
-            </blockquote>
-
-            <p className="text-slate-300 text-base leading-relaxed font-light">
-              Under Pavan's leadership, Syntrix Technologies has evolved from a boutique digital consulting initiative into a full-suite technological partner. We specialize in transforming complex marketing challenges into predictable growth engines through cutting-edge engineering and automated workflows.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center space-x-2.5 bg-slate-900/80 border border-slate-800 p-3 rounded-xl">
-                <CheckCircle2 size={18} className="text-cyan-400 shrink-0" />
-                <span className="text-sm font-semibold text-slate-200">AI Agent Custom Deployment</span>
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500" />
+            <div className="relative h-full bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between">
+              <div className="relative w-full h-[380px] sm:h-[440px] bg-slate-950 flex items-center justify-center overflow-hidden">
+                <img
+                  src="/Suhani.png"
+                  alt="Suhani Shah - CEO of SynaptrinTech"
+                  className="w-full h-full object-cover object-center block filter contrast-[1.02]"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 text-purple-300 text-xs font-bold rounded-full z-10">
+                  Chief Executive Officer
+                </div>
               </div>
-              <div className="flex items-center space-x-2.5 bg-slate-900/80 border border-slate-800 p-3 rounded-xl">
-                <CheckCircle2 size={18} className="text-cyan-400 shrink-0" />
-                <span className="text-sm font-semibold text-slate-200">Technical & Organic SEO</span>
-              </div>
-              <div className="flex items-center space-x-2.5 bg-slate-900/80 border border-slate-800 p-3 rounded-xl">
-                <CheckCircle2 size={18} className="text-cyan-400 shrink-0" />
-                <span className="text-sm font-semibold text-slate-200">High-Converting Web Design</span>
-              </div>
-              <div className="flex items-center space-x-2.5 bg-slate-900/80 border border-slate-800 p-3 rounded-xl">
-                <CheckCircle2 size={18} className="text-cyan-400 shrink-0" />
-                <span className="text-sm font-semibold text-slate-200">Data Analytics & Funnels</span>
-              </div>
-            </div>
 
-            <div className="pt-4">
-              <a
-                href="#contact"
-                onClick={handleContactClick}
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-3.5 rounded-full font-bold transition-all shadow-lg shadow-cyan-500/20 hover:scale-105 text-sm"
-              >
-                <span>Get in Touch with Pavan</span>
-                <ArrowRight size={18} />
-              </a>
+              <div className="p-6 space-y-4 bg-slate-900/95 backdrop-blur-md border-t border-slate-800/80 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-extrabold text-white tracking-wide">Suhani Shah</h3>
+                  <p className="text-purple-400 font-semibold text-xs sm:text-sm flex items-center gap-1 mt-0.5">
+                    <Award size={16} /> CEO, SynaptrinTech
+                  </p>
+                  <blockquote className="text-sm text-slate-300 font-medium italic border-l-2 border-purple-400 pl-3 mt-3">
+                    "As CEO of SynaptrinTech, I lead our strategic expansion and operational excellence to ensure ambitious brands achieve predictable growth worldwide."
+                  </blockquote>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="#contact"
+                    onClick={handleContactClick}
+                    className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-5 py-2.5 rounded-full font-bold text-xs transition-all hover:scale-105 shadow-lg shadow-purple-500/20"
+                  >
+                    <span>Connect with CEO</span>
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

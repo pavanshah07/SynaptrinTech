@@ -22,7 +22,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-8"
           >
-            Elevate Your Brand with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Syntrix</span>
+            Elevate Your Brand with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">SynaptrinTech</span>
           </motion.h1>
 
           <motion.p

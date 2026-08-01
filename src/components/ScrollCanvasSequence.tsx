@@ -224,7 +224,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
                 Empowering Growth via{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
-                  Syntrix Technologies
+                  SynaptrinTech Technologies
                 </span>
               </h1>
 
@@ -549,7 +549,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
                   Experience Our Social Media & Brand Campaigns
                 </h3>
                 <p className="text-slate-300 text-sm leading-relaxed font-light">
-                  Watch how Syntrix Technologies crafts viral social content, high-conversion Instagram reels, and automated Meta ad funnels for our partners.
+                  Watch how SynaptrinTech Technologies crafts viral social content, high-conversion Instagram reels, and automated Meta ad funnels for our partners.
                 </p>
                 
                 <div className="pt-2 flex flex-wrap gap-2 text-xs font-semibold">
@@ -619,7 +619,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
                 <span>Connect Across Platforms</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-                Syntrix Social Media & Content Hub
+                SynaptrinTech Social Media & Content Hub
               </h2>
               <p className="text-slate-300 text-sm sm:text-base">
                 Follow our official channels for daily tech insights, SEO tutorials, live AI builds, and growth marketing strategies.
@@ -698,7 +698,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
                     <ExternalLink size={16} className="text-slate-500 group-hover:text-red-400 transition-colors" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-1">YouTube Channel</h4>
-                  <p className="text-xs text-red-400 font-semibold mb-3">Syntrix Tech</p>
+                  <p className="text-xs text-red-400 font-semibold mb-3">SynaptrinTech</p>
                   <p className="text-slate-400 text-xs leading-relaxed mb-4">
                     Full video walkthroughs on React web development, custom AI agent builds, and technical SEO masterclasses.
                   </p>
@@ -743,7 +743,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
               <div className="flex items-center justify-between mb-3 px-1">
                 <div className="flex items-center space-x-2 text-xs font-bold text-cyan-400">
                   <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
-                  <span>Syntrix Official Media & Social Campaign Video</span>
+                  <span>SynaptrinTech Official Media & Social Campaign Video</span>
                 </div>
                 <span className="text-[10px] text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800 font-mono">
                   HD 1080p Video
@@ -774,7 +774,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
             <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shrink-0 shadow-2xl relative group">
               <img
                 src="/pavan.jpg"
-                alt="Pavan Shah - Founder & CEO of Syntrix Technologies"
+                alt="Pavan Shah - Founder & CEO of SynaptrinTech Technologies"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/Pavan.png';
@@ -789,7 +789,7 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
                 <span>Founder & CEO</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Pavan Shah — Driving Innovation at Syntrix
+                Pavan Shah — Driving Innovation at SynaptrinTech
               </h3>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
                 "Our mission is to empower businesses with state-of-the-art web architectures, organic SEO authority, and custom AI agent automation that drive tangible business growth."

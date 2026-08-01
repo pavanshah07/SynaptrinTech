@@ -30,7 +30,9 @@ function MainContent() {
   // Sync state with URL location hash
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
+      const fullHash = window.location.hash;
+      const hash = fullHash.replace('#', '');
+
       if (hash === 'signin' || hash === 'signup') {
         setView(hash as 'signin' | 'signup');
       } else if (['home', 'about', 'services', 'pricing', 'contact'].includes(hash)) {
@@ -205,7 +207,7 @@ function MainContent() {
               <h3 className="text-2xl font-extrabold text-white mb-2">Login Required</h3>
               
               <p className="text-slate-300 text-sm mb-6 leading-relaxed">
-                You must be logged in to purchase the <strong className="text-cyan-400">Syntrix {loginPrompt.plan?.name}</strong> plan ({loginPrompt.plan?.price}).
+                You must be logged in to purchase the <strong className="text-cyan-400">SynaptrinTech {loginPrompt.plan?.name}</strong> plan ({loginPrompt.plan?.price}).
                 Please sign in or create a free account to proceed to checkout.
               </p>
 
