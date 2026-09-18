@@ -59,6 +59,11 @@ export function Navigation({ activeTab = 'home', onOpenSignIn, onOpenSignUp, onN
               <img 
                 src="/Synaptrintech.png" 
                 alt="SynaptrinTech Logo" 
+                width="180"
+                height="56"
+                decoding="async"
+                // @ts-ignore
+                fetchPriority="high"
                 className="h-10 sm:h-12 md:h-14 w-auto object-contain max-h-[56px] transform group-hover:scale-105 transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(6,182,212,0.35)]"
               />
             </a>

@@ -63,6 +63,10 @@ export function About({ onNavigate }: AboutProps) {
                 <img
                   src="/Pavan.png"
                   alt="Pavan Shah - Founder of SynaptrinTech"
+                  width="600"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top block filter contrast-[1.02]"
                 />
                 <div className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/20 backdrop-blur-md border border-cyan-500/30 text-cyan-300 text-xs font-bold rounded-full z-10">
@@ -109,6 +113,10 @@ export function About({ onNavigate }: AboutProps) {
                 <img
                   src="/Suhani.png"
                   alt="Suhani Shah - CEO of SynaptrinTech"
+                  width="600"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-center block filter contrast-[1.02]"
                 />
                 <div className="absolute top-4 left-4 px-3 py-1 bg-purple-500/20 backdrop-blur-md border border-purple-500/30 text-purple-300 text-xs font-bold rounded-full z-10">

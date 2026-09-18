@@ -75,46 +75,90 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
   // Map scroll progress (0.0 -> 1.0) to frame index (0 -> 239)
   const frameIndexProgress = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
 
-  // Preload all 240 frames
+  // Progressive frame loader: load initial priority batch for instant rendering,
+  // then load remaining frames in idle background chunks to prevent mobile network congestion.
   useEffect(() => {
     let isCancelled = false;
     const loadedImages: HTMLImageElement[] = new Array(FRAME_COUNT);
-    let count = 0;
+    const INITIAL_BATCH_SIZE = 15;
+    let initialCount = 0;
 
-    for (let i = 1; i <= FRAME_COUNT; i++) {
+    // Load initial 15 frames for instant Hero rendering
+    for (let i = 1; i <= INITIAL_BATCH_SIZE; i++) {
       const img = new Image();
       img.src = getFramePath(i);
       img.onload = () => {
         if (isCancelled) return;
         loadedImages[i - 1] = img;
-        count++;
-        setLoadedCount(count);
-        if (count === FRAME_COUNT) {
-          setImages(loadedImages);
+        initialCount++;
+        if (initialCount >= 5) {
+          setImages([...loadedImages]);
           setIsLoaded(true);
-          setIsPlaying(true);
         }
-      };
-      img.onerror = () => {
-        if (isCancelled) return;
-        count++;
-        setLoadedCount(count);
       };
     }
 
+    // Load remaining frames asynchronously in background chunks
+    const loadRemainingFrames = (startIdx: number) => {
+      if (isCancelled || startIdx > FRAME_COUNT) return;
+      const endIdx = Math.min(startIdx + 20, FRAME_COUNT);
+      let chunkLoaded = 0;
+
+      for (let i = startIdx; i <= endIdx; i++) {
+        const img = new Image();
+        img.src = getFramePath(i);
+        img.onload = () => {
+          if (isCancelled) return;
+          loadedImages[i - 1] = img;
+          chunkLoaded++;
+          if (chunkLoaded === (endIdx - startIdx + 1)) {
+            setImages([...loadedImages]);
+            if (endIdx < FRAME_COUNT) {
+              setTimeout(() => loadRemainingFrames(endIdx + 1), 50);
+            }
+          }
+        };
+        img.onerror = () => {
+          if (isCancelled) return;
+          chunkLoaded++;
+        };
+      }
+    };
+
+    const timer = setTimeout(() => {
+      loadRemainingFrames(INITIAL_BATCH_SIZE + 1);
+    }, 150);
+
     return () => {
       isCancelled = true;
+      clearTimeout(timer);
     };
   }, []);
 
-  // Draw frame on canvas
+  // Draw frame on canvas with fallback support for smooth scrolling
   const renderFrame = (index: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const img = images[index];
+    let img = images[index];
+    if (!img) {
+      for (let i = index - 1; i >= 0; i--) {
+        if (images[i]) {
+          img = images[i];
+          break;
+        }
+      }
+      if (!img) {
+        for (let i = index + 1; i < images.length; i++) {
+          if (images[i]) {
+            img = images[i];
+            break;
+          }
+        }
+      }
+    }
     if (!img) return;
 
     const canvasWidth = window.innerWidth;
@@ -222,14 +266,14 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
               </div>
 
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
-                Empowering Growth via{' '}
+                AI-Powered Digital Solutions for{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
-                  SynaptrinTech Technologies
+                  Business Growth
                 </span>
               </h1>
 
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
-                We blend technical SEO, modern web development, and cutting-edge AI agents to build high-converting web experiences that scale.
+                Grow your business with SEO, digital marketing, web development, and AI automation.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -311,10 +355,13 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
             className="absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-6 pointer-events-none"
           >
             <div className="text-center max-w-4xl mx-auto pointer-events-auto">
-              <h2 className="text-sm font-bold text-cyan-400 tracking-widest uppercase mb-4">Engineered For Performance</h2>
-              <h3 className="text-3xl sm:text-5xl font-extrabold text-white mb-12">
-                Transforming Digital Metrics Into Real Revenue
-              </h3>
+              <span className="text-sm font-bold text-cyan-400 tracking-widest uppercase mb-4 block">Engineered For Performance</span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-6">
+                Why Choose SynaptrinTech?
+              </h2>
+              <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                We combine web development, SEO, digital marketing, and AI automation to create practical digital solutions.
+              </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800/80 p-6 rounded-2xl shadow-xl">
@@ -426,10 +473,10 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
                 <span>End-to-End Technology & Growth</span>
               </div>
               <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
-                SEO, Web Development & Digital Marketing Excellence
+                Web Development Solutions for Growing Businesses
               </h2>
               <p className="text-slate-400 text-base sm:text-lg">
-                Comprehensive digital agency solutions designed to elevate brand authority and drive sustainable revenue.
+                We build modern, responsive, and high-converting websites and web applications for businesses.
               </p>
             </div>
 
@@ -505,9 +552,9 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
                 <div className="w-14 h-14 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Megaphone size={28} />
                 </div>
-                <h3 className="text-2xl font-extrabold text-white mb-3">Digital Marketing & Ads</h3>
+                <h2 className="text-2xl font-extrabold text-white mb-3">AI Automation and Custom AI Agents</h2>
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                  High-converting PPC ad campaigns on Meta & Google Ads paired with custom AI agents that automate customer lead qualification 24/7.
+                  Automate repetitive business processes with custom AI automation and intelligent AI agents.
                 </p>
                 <div className="space-y-2 mb-6 text-xs text-slate-400">
                   <div className="flex items-center gap-2">
@@ -775,6 +822,10 @@ export function ScrollCanvasSequence({ onSelectPlan, onNavigate }: ScrollCanvasS
               <img
                 src="/pavan.jpg"
                 alt="Pavan Shah - Founder & CEO of SynaptrinTech Technologies"
+                width="176"
+                height="176"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/Pavan.png';

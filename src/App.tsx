@@ -5,19 +5,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navigation } from './components/Navigation';
 import { ScrollCanvasSequence } from './components/ScrollCanvasSequence';
-import { About } from './components/About';
-import { Services } from './components/Services';
-import { Pricing } from './components/Pricing';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { PaymentPage } from './components/PaymentPage';
-import { AuthPage } from './components/AuthPage';
 import { Sparkles, ShieldCheck, Lock, X, LogIn, UserPlus } from 'lucide-react';
+
+const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
+const Services = lazy(() => import('./components/Services').then(m => ({ default: m.Services })));
+const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
+const PaymentPage = lazy(() => import('./components/PaymentPage').then(m => ({ default: m.PaymentPage })));
+const AuthPage = lazy(() => import('./components/AuthPage').then(m => ({ default: m.AuthPage })));
 
 type TabType = 'home' | 'about' | 'services' | 'pricing' | 'contact';
 
@@ -87,24 +88,38 @@ function MainContent() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
+  // Loading Fallback Component
+  const ComponentLoader = () => (
+    <div className="min-h-[50vh] flex items-center justify-center">
+      <div className="flex items-center space-x-2 text-cyan-400 font-bold animate-pulse text-sm">
+        <Sparkles size={18} />
+        <span>Loading SynaptrinTech Module...</span>
+      </div>
+    </div>
+  );
+
   // Full-screen Payment View
   if (selectedPlan) {
     return (
-      <PaymentPage
-        planName={selectedPlan.name}
-        price={selectedPlan.price}
-        onBack={() => handleNavigate('#pricing')}
-      />
+      <Suspense fallback={<ComponentLoader />}>
+        <PaymentPage
+          planName={selectedPlan.name}
+          price={selectedPlan.price}
+          onBack={() => handleNavigate('#pricing')}
+        />
+      </Suspense>
     );
   }
 
   // Full-screen Dedicated Auth Page View (Sign In / Sign Up)
   if (view === 'signin' || view === 'signup') {
     return (
-      <AuthPage
-        initialMode={view}
-        onBack={() => handleNavigate('#home')}
-      />
+      <Suspense fallback={<ComponentLoader />}>
+        <AuthPage
+          initialMode={view}
+          onBack={() => handleNavigate('#home')}
+        />
+      </Suspense>
     );
   }
 
@@ -149,29 +164,31 @@ function MainContent() {
             <ScrollCanvasSequence onSelectPlan={handleSelectPlan} onNavigate={handleNavigate} />
           )}
 
-          {activeTab === 'about' && (
-            <div className="pt-6">
-              <About onNavigate={handleNavigate} />
-            </div>
-          )}
+          <Suspense fallback={<ComponentLoader />}>
+            {activeTab === 'about' && (
+              <div className="pt-6">
+                <About onNavigate={handleNavigate} />
+              </div>
+            )}
 
-          {activeTab === 'services' && (
-            <div className="pt-6">
-              <Services />
-            </div>
-          )}
+            {activeTab === 'services' && (
+              <div className="pt-6">
+                <Services />
+              </div>
+            )}
 
-          {activeTab === 'pricing' && (
-            <div className="pt-6">
-              <Pricing onSelectPlan={handleSelectPlan} />
-            </div>
-          )}
+            {activeTab === 'pricing' && (
+              <div className="pt-6">
+                <Pricing onSelectPlan={handleSelectPlan} />
+              </div>
+            )}
 
-          {activeTab === 'contact' && (
-            <div className="pt-6">
-              <Contact />
-            </div>
-          )}
+            {activeTab === 'contact' && (
+              <div className="pt-6">
+                <Contact />
+              </div>
+            )}
+          </Suspense>
         </main>
       </div>
 

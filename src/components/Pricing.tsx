@@ -100,10 +100,10 @@ export function Pricing({ onSelectPlan }: PricingProps) {
             <span>Transparent Subscription Plans</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
-            Select Your Growth Subscription
+            Our Digital Solutions and Pricing
           </h2>
           <p className="text-slate-400 text-base sm:text-lg font-light leading-relaxed">
-            All plans include Instagram, Facebook, YouTube Ads, Website Development, and AI integration.
+            Explore our services and choose the solution that fits your business requirements.
           </p>
 
           {/* Billing Cycle Switcher Toggle */}

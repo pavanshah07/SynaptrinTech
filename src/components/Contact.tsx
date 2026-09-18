@@ -66,10 +66,10 @@ export function Contact() {
           >
             <span className="block text-sm font-bold text-cyan-400 tracking-widest uppercase mb-3">Contact Us</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tight">
-              Let's build something extraordinary together.
+              Get Started With SynaptrinTech
             </h2>
             <p className="text-lg text-slate-400 mb-10 leading-relaxed font-light">
-              Ready to transform your digital presence? Reach out to our team to discuss your project, request an audit, or learn more about our AI solutions.
+              Start growing your business with our digital marketing, SEO, web development, and AI automation services.
             </p>
 
             <div className="space-y-8">

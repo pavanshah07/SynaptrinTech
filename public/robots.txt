@@ -1,9 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# Host
-Host: https://synaptrintech.com
-
-# Sitemaps
-Sitemap: https://synaptrintech.com/sitemap.xml
+Sitemap: https://synaptrintech.vercel.app/sitemap.xml

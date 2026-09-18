@@ -22,7 +22,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-8"
           >
-            Elevate Your Brand with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">SynaptrinTech</span>
+            AI-Powered Digital Solutions for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Business Growth</span>
           </motion.h1>
 
           <motion.p
@@ -31,7 +31,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            We blend digital marketing, SEO, and cutting-edge AI agents to build web experiences that convert and scale.
+            Grow your business with SEO, digital marketing, web development, and AI automation.
           </motion.p>
 
           <motion.div

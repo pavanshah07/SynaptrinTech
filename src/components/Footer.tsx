@@ -23,6 +23,10 @@ export function Footer({ onNavigate }: FooterProps) {
               <img 
                 src="/Synaptrintech.png" 
                 alt="SynaptrinTech Logo" 
+                width="180"
+                height="56"
+                loading="lazy"
+                decoding="async"
                 className="h-10 sm:h-12 md:h-14 w-auto object-contain max-h-[56px] transform group-hover:scale-105 transition-all duration-300 filter drop-shadow-[0_0_10px_rgba(6,182,212,0.3)]"
               />
             </a>
@@ -70,11 +74,30 @@ export function Footer({ onNavigate }: FooterProps) {
           
           {/* Legal Links */}
           <div>
-            <h5 className="font-bold mb-4 text-white text-sm uppercase tracking-wider">Legal</h5>
+            <h5 className="font-bold mb-4 text-white text-sm uppercase tracking-wider">Legal & Resources</h5>
             <ul className="space-y-2.5 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+              <li><a href="#" className="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+              <li>
+                <a
+                  href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 transition-colors"
+                >
+                  Google SEO Guide
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://developers.google.com/search/docs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 transition-colors"
+                >
+                  Google Search Central
+                </a>
+              </li>
             </ul>
           </div>
         </div>

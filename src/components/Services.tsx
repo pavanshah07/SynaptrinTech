@@ -190,10 +190,10 @@ export function Services() {
             <span>Premium Digital & AI Services</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
-            Comprehensive Digital Agency Solutions
+            Digital Marketing and SEO Services
           </h2>
           <p className="text-slate-400 text-base sm:text-lg font-light leading-relaxed">
-            From Meta Ads & Google PPC to modern Web Development, Technical SEO, and Custom AI Agents.
+            Improve your online visibility with technical SEO, digital marketing, and performance-focused strategies.
           </p>
         </div>
 
