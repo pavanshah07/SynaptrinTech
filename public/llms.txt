@@ -1,0 +1,24 @@
+# SynaptrinTech Technologies
+
+> SynaptrinTech Technologies provides technical SEO, digital marketing, web development, and AI agent automation services to help businesses scale online.
+
+## Website
+- Primary URL: https://synaptrintech.vercel.app/
+
+## Core Services
+- Technical SEO & Organic Keyword Optimization
+- Custom Web Architecture & Full-Stack Development
+- Digital Marketing & Multi-Channel Ad Management
+- AI Agent & Workflow Automation
+
+## Key Sections
+- About SynaptrinTech: https://synaptrintech.vercel.app/#about
+- Digital Services: https://synaptrintech.vercel.app/#services
+- Subscription Pricing: https://synaptrintech.vercel.app/#pricing
+- Contact & Support: https://synaptrintech.vercel.app/#contact
+
+## Leadership & Trust
+- Founder & CEO: Pavan Shah
+- Chief Executive Officer: Suhani Shah
+- Head Office: Malad West, Mumbai, Maharashtra 400064, India
+- Direct Support: +91 87994 23605 | shahpavan46@gmail.com

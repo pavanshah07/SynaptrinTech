@@ -11,6 +11,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navigation } from './components/Navigation';
 import { ScrollCanvasSequence } from './components/ScrollCanvasSequence';
 import { Footer } from './components/Footer';
+import { TrustPolicyModal } from './components/TrustPolicyModal';
 import { Sparkles, ShieldCheck, Lock, X, LogIn, UserPlus } from 'lucide-react';
 
 const About = lazy(() => import('./components/About').then(m => ({ default: m.About })));
@@ -27,6 +28,7 @@ function MainContent() {
   const [view, setView] = useState<'page' | 'signin' | 'signup'>('page');
   const [selectedPlan, setSelectedPlan] = useState<{ name: string, price: string } | null>(null);
   const [loginPrompt, setLoginPrompt] = useState<{ isOpen: boolean, plan?: { name: string, price: string } }>({ isOpen: false });
+  const [trustPolicy, setTrustPolicy] = useState<'privacy' | 'terms' | 'editorial' | null>(null);
 
   const { user } = useAuth();
 
@@ -38,6 +40,12 @@ function MainContent() {
 
       if (hash === 'signin' || hash === 'signup') {
         setView(hash as 'signin' | 'signup');
+      } else if (hash === 'privacy-policy') {
+        setTrustPolicy('privacy');
+      } else if (hash === 'terms-of-service') {
+        setTrustPolicy('terms');
+      } else if (hash === 'editorial-policy') {
+        setTrustPolicy('editorial');
       } else if (['home', 'about', 'services', 'pricing', 'contact'].includes(hash)) {
         setView('page');
         setActiveTab(hash as TabType);
@@ -61,6 +69,12 @@ function MainContent() {
     const cleanHash = href.replace('#', '');
     if (cleanHash === 'signin' || cleanHash === 'signup') {
       setView(cleanHash as 'signin' | 'signup');
+    } else if (cleanHash === 'privacy-policy') {
+      setTrustPolicy('privacy');
+    } else if (cleanHash === 'terms-of-service') {
+      setTrustPolicy('terms');
+    } else if (cleanHash === 'editorial-policy') {
+      setTrustPolicy('editorial');
     } else {
       setView('page');
       setSelectedPlan(null);
@@ -193,6 +207,17 @@ function MainContent() {
       </div>
 
       <Footer onNavigate={handleNavigate} />
+
+      {/* Interactive Trust & E-E-A-T Policy Modal */}
+      <TrustPolicyModal
+        policyType={trustPolicy}
+        onClose={() => {
+          setTrustPolicy(null);
+          if (['#privacy-policy', '#terms-of-service', '#editorial-policy'].includes(window.location.hash)) {
+            window.history.pushState(null, '', '#home');
+          }
+        }}
+      />
 
       {/* Login Required Modal Prompt */}
       <AnimatePresence>

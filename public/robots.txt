@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+# Sitemaps & AI Discoverability
 Sitemap: https://synaptrintech.vercel.app/sitemap.xml
+# LLM Site Reference: https://synaptrintech.vercel.app/llms.txt
